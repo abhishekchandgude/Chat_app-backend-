@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Calling Website API",
+    "_postman_id": "6cb20a95-a672-4ea8-8d69-93080a1a9150",
+    "description": "Collection for testing the local SMS API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Send Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"+911234567890\",\n  \"message\": \"Hello from Postman\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/send-message",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "send-message"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Send Link",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"+911234567890\",\n  \"message\": \"Your chat room is ready.\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/send-link",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "send-link"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
