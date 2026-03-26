@@ -45,10 +45,6 @@ function getFrontendBaseUrl() {
         return process.env.FRONTEND_BASE_URL;
     }
 
-    if (process.env.VERCEL_URL) {
-        return `https://${process.env.VERCEL_URL}`;
-    }
-
     return 'https://chat-app-frontend-gamma-murex.vercel.app';
 }
 
