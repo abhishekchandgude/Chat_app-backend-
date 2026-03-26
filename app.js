@@ -1,9 +1,16 @@
-require('dotenv').config();
-
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const crypto = require('crypto');
-const twilio = require('twilio');
+
+if (!process.env.VERCEL) {
+    const envPath = path.resolve(__dirname, '.env');
+
+    if (fs.existsSync(envPath)) {
+        require('dotenv').config({ path: envPath });
+    }
+}
 
 function getTwilioConfigError() {
     const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } = process.env;
@@ -24,6 +31,8 @@ function getTwilioConfigError() {
 }
 
 function getTwilioClient() {
+    const twilio = require('twilio');
+
     return twilio(
         process.env.TWILIO_ACCOUNT_SID,
         process.env.TWILIO_AUTH_TOKEN
@@ -167,10 +176,13 @@ function createApp() {
     return app;
 }
 
-module.exports = {
-    createApp,
-    getTwilioConfigError,
-    getFrontendBaseUrl,
-    buildChatLink,
-    generateRoomId
-};
+const app = createApp();
+
+app.getTwilioConfigError = getTwilioConfigError;
+app.getFrontendBaseUrl = getFrontendBaseUrl;
+app.buildChatLink = buildChatLink;
+app.generateRoomId = generateRoomId;
+app.createApp = createApp;
+
+module.exports = app;
+module.exports.default = app;

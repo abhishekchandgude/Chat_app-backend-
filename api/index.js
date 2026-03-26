@@ -1,3 +1,4 @@
-const { createApp } = require('../app');
+const app = require('../app');
 
-module.exports = createApp();
+module.exports = app;
+module.exports.default = app;
