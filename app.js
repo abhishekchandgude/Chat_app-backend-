@@ -48,7 +48,7 @@ function getFrontendBaseUrl() {
         return `https://${process.env.VERCEL_URL}`;
     }
 
-    return 'http://localhost:5173';
+    return 'https://chat-app-frontend-gamma-murex.vercel.app';
 }
 
 function buildChatLink(roomId) {
@@ -150,8 +150,8 @@ function createApp() {
         const finalRoomId = roomId || generateRoomId();
         const chatLink = buildChatLink(finalRoomId);
         const smsBody = message
-            ? `${message}\n${chatLink}`
-            : `Hi! Join my chat here: ${chatLink}`;
+            ? `${message}\nRoom ID: ${finalRoomId}\nJoin the chat: ${chatLink}`
+            : `Hi! Join my chat here:\nRoom ID: ${finalRoomId}\nJoin the chat: ${chatLink}`;
 
         try {
             const client = getTwilioClient();
