@@ -41,11 +41,9 @@ function getTwilioClient() {
 }
 
 function getFrontendBaseUrl() {
-    if (process.env.FRONTEND_BASE_URL) {
-        return process.env.FRONTEND_BASE_URL;
-    }
+    const frontendBaseUrl = process.env.FRONTEND_BASE_URL || 'https://chat-app-frontend-gamma-murex.vercel.app';
 
-    return 'https://chat-app-frontend-gamma-murex.vercel.app';
+    return frontendBaseUrl.replace(/\/$/, '');
 }
 
 function buildChatLink(roomId) {
