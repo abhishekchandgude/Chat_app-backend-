@@ -41,7 +41,7 @@ function getTwilioClient() {
 }
 
 function getFrontendBaseUrl() {
-    const frontendBaseUrl = process.env.FRONTEND_BASE_URL || 'https://chat-app-frontend-gamma-murex.vercel.app';
+    const frontendBaseUrl = process.env.FRONTEND_BASE_URL || 'https://chat-app-frontend-yrwp.vercel.app';
 
     return frontendBaseUrl.replace(/\/$/, '');
 }
